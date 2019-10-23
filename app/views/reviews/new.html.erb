@@ -1,0 +1,22 @@
+<h1>レビュー登録</h1>
+
+  <%= form_for(@review) do |f| %>
+   <div><%= f.label :date %>
+   <%= f.date_field :date %></div>
+   
+   <div><%= f.label :content %>
+   <%=f.text_area :content %></div>
+   
+   <div><%= f.label :place_id %>
+   <%= f.select :place_id, Place.all.map{ |plc| [plc.area, plc.id] } %></div>
+   
+   <%= f.submit "レビュー登録する" %>
+  <% end %>
+  
+  
+
+  
+  
+  
+  
+  

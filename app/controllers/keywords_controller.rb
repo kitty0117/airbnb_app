@@ -9,7 +9,7 @@ class KeywordsController < ApplicationController
   def create
     @keywd= Place.find_by(area: params[:keywd])
     if @keywd
-      redirect_to '/keywords/index'
+      redirect_to '/keywords'
     else
       render 'new'
     end 

@@ -8,6 +8,12 @@
 
     <div><%= f.label :number %>
     <%= f.number_field :number %></div>
+    
+    <div><%= f.label :user_id %>
+    <%= f.select :user_id, User.all.map{ |usr| [usr.name,usr.id] } %></div>
+    
+    <div><%= f.label :place_id %>
+    <%= f.collection_select :place_id,@places, :id, :area%></div>
 
     <%= f.submit "予約する" %>
    <% end %>
