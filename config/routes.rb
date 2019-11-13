@@ -9,8 +9,7 @@ Rails.application.routes.draw do
   
   resources :users
   resources :reserves
-  
-  post "reserves/create"
+
   
   resources :reviews
 

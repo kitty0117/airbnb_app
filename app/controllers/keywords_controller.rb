@@ -4,6 +4,8 @@ class KeywordsController < ApplicationController
   end 
   
   def new
+    @p=Place.all
+    
   end
   
   def create

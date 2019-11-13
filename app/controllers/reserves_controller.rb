@@ -1,4 +1,5 @@
 class ReservesController < ApplicationController
+  before_action :authenticate_user!	
   def new
     @reserve=Reserve.new()
     @places=Place.all
@@ -9,19 +10,19 @@ class ReservesController < ApplicationController
   end 
   
   def create
-    @reserve=Reserve.new(reserve_params)
-    if @reserve.save
-      flash[:success]="予約完了"
-      redirect_to @reserve
-    else
-      render 'new'
-    end 
+    @reserve=Reserve.new(reserve_params.merge(user_id: current_user.id))
+     if @reserve.save 
+       flash[:success]="予約完了"
+       redirect_to @reserve
+     else
+       render 'new'
+     end 
   end 
   
   private
   
   def reserve_params
-    params.require(:reserve).permit(:date,:number,:user_id,:place_id)
+    params.require(:reserve).permit(:date,:number,:place_id)
   end 
 
 end
